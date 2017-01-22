@@ -19,10 +19,14 @@ describe Airport do
     end
 
     it "should return that a plane has taken off and therefore no longer in the airport" do
-      airport.land_plane(plane)
-      airport.take_off(plane)
+
       expect(airport.planes).not_to include(plane)
     end
+
+    it "should return the plane that has taken off" do
+      airport.land_plane(plane)
+      expect(airport.take_off(plane)).to eq(plane)
+    end 
   end
 
     context 'raise error' do

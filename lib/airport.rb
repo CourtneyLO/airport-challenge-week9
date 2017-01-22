@@ -3,7 +3,7 @@ require_relative 'plane'
 
 class Airport
 
-  attr_reader :planes, :weather, :capacity
+  attr_reader :planes, :weather
 
   DEFAULT_CAPACITY = 10
 
@@ -24,9 +24,12 @@ class Airport
       raise "Cannot take off: plane is not in this airport" unless planes.include? plane
       plane.take_off
       planes.delete(plane)
+      plane 
     end
 
   private
+
+  attr_reader :capacity
 
     def is_stormy?
       Weather.new.condition == "stormy"

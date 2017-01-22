@@ -20,7 +20,7 @@ describe Plane do
     end
   end
 
-    it "should store the palne at the airport it lands at" do
+    it "should store the plane at the airport it lands at" do
       plane.land(airport)
       expect(plane.airport).to eq(airport)
     end
