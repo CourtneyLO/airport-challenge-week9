@@ -12,11 +12,14 @@ class Airport
     end
 
     def land_plane(plane)
-      @planes.push(plane) unless full_capacity? || is_stormy?
+      raise "Cannot land plane: weather is stormy" if is_stormy?
+      raise "Cannot land plane: airport if full" if full_capacity?
+      @planes.push(plane)
     end
 
     def take_off(plane)
-      @planes.delete(plane) unless is_stormy?
+      raise "Cannot take off: the wheather is stormy" if is_stormy?
+      @planes.delete(plane)
     end
 
   private
