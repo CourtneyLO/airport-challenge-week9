@@ -4,6 +4,8 @@ describe Airport do
   subject(:airport) { described_class.new }
 
   let(:plane) { double(:plane) }
+  let(:plane1) { double(:plane) }
+  
 
   context '#land plane' do
     it "should return that a plane has landed in the airport" do
@@ -19,4 +21,15 @@ describe Airport do
       expect(airport.planes).not_to include(plane)
     end
   end
-end 
+
+  context '#capacity' do
+    it "should not allow planes to land if the airport is full" do
+      10.times {airport.land_plane(plane)}
+      airport.land_plane(plane1)
+      expect(airport.planes).not_to include(plane1)
+    end
+  end
+
+
+
+end
